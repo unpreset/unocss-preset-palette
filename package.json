@@ -1,18 +1,18 @@
 {
   "name": "unocss-preset-palette",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Plette Preset for UnoCSS",
   "main": "index.js",
   "type": "module",
-  "types": "index.d.ts",
+  "types": "./dist/index.d.ts",
   "exports": "./dist/index.js",
   "files": [
-    "dist",
-    "index.d.ts"
+    "dist"
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && api-extractor run"
+    "build": "tsc && vite build && api-extractor run",
+    "release": "npx bumpp package.json --commit \"release: v\" --push --tag"
   },
   "repository": {
     "type": "git",
