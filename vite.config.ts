@@ -51,9 +51,9 @@ export default defineConfig(({mode})=>({
 			? false
 			: {
 				entry: './src/index.ts',
-				formats: ['es'],
-				fileName:()=>"index.js",
-			  },
+				formats: ['es',"cjs"],
+				fileName: (format) => `index.${format}.js`
+			},
 		rollupOptions: {
 		  external: ['unocss','@unocss/preset-mini'],
 		},
