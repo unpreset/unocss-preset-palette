@@ -1,6 +1,39 @@
 import { parseCssColor } from "@unocss/preset-mini/utils"
 import type { Preset } from "unocss"
 
+export type Colors = Record<string, string | Record<string, string>>
+
+export interface CssVarName{
+	(name: string): string
+	prefix?: string
+	suffix?: string
+}
+
+export interface PaletteOptions {
+	colors?: Colors
+	/**
+	 *  @see "@vueuse/core/useColorMode"
+	 */
+	colorMode?: {
+		/**
+		 *  @default  'html'
+		 */
+		selector?: string
+		/**
+		 *  @default 'class'
+		 */
+		attribute?: string
+		/**
+		 *  @default 'light'
+		 */
+		defaultValue?: string
+	}
+
+	/**
+	 * @default --un-platte-[name]-color
+	 */
+	cssVarName?: CssVarName
+}
 
 function getCssColor(color: string) {
 	const cssColor = parseCssColor(color)
