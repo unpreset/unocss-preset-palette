@@ -1,57 +1,75 @@
 {
   "name": "unocss-preset-palette",
   "version": "0.0.5",
-  "description": "Plette Preset for UnoCSS",
+  "description": "Palette Preset for UnoCSS",
+  "sideEffects": false,
+  "type": "module",
   "exports": {
     ".": {
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
     }
   },
-  "main": "dist/index.cjs",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build && api-extractor run",
-    "release": "bumpp package.json --commit \"release: v\" --push --tag"
+    "dev": "vite playground",
+    "build": "unbuild",
+    "release": "bumpp package.json --commit \"release: v\" --push --tag",
+    "lint": "eslint --ext .ts,.tsx .",
+    "prepare": "npx simple-git-hooks"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Kritsu/unocss-preset-palette.git"
+    "url": "git+https://github.com/chizukicn/unocss-preset-palette.git"
   },
   "keywords": [
     "unocss",
     "unocss-preset",
     "unocss-preset-palette"
   ],
-  "author": "apateat",
+  "author": "chizukicn",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Kritsu/unocss-preset-palette/issues"
+    "url": "https://github.com/chizukicn/unocss-preset-palette/issues"
   },
-  "homepage": "https://github.com/Kritsu/unocss-preset-palette#readme",
+  "homepage": "https://github.com/chizukicn/unocss-preset-palette#readme",
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.19.4",
-    "@unocss/preset-mini": "^0.27.2",
-    "@vitejs/plugin-vue-jsx": "^1.3.8",
-    "@vueuse/core": "^7.7.1",
+    "@curev/eslint-config": "^0.1.7",
+    "@vitejs/plugin-vue-jsx": "^3.0.1",
+    "@vueuse/core": "^10.2.1",
+    "bumpp": "^9.1.1",
+    "eslint": "^8.44.0",
+    "lint-staged": "^13.2.3",
     "prettier": "^2.5.1",
-    "typescript": "4.5.5",
-    "unocss": "^0.27.2",
-    "vite": "^2.8.6",
-    "vue": "^3.2.31"
+    "simple-git-hooks": "^2.8.1",
+    "typescript": "5.1.6",
+    "unbuild": "^1.2.1",
+    "unocss": "^0.53.4",
+    "vite": "^4.3.9",
+    "vue": "^3.3.4"
   },
   "peerDependencies": {
-    "@unocss/preset-mini": "<1",
-    "unocss": "<1"
+    "@unocss/core": "<1",
+    "@unocss/preset-mini": "<1"
   },
   "dependencies": {
-    "bumpp": "^7.1.1"
+    "@unocss/core": "^0.53.4",
+    "@unocss/preset-mini": "^0.53.4"
+  },
+  "simple-git-hooks": {
+    "pre-commit": [
+      "npx lint-staged"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,vue}": [
+      "eslint --fix"
+    ]
   }
 }
