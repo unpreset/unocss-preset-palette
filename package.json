@@ -1,6 +1,6 @@
 {
   "name": "unocss-preset-palette",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "Palette Preset for UnoCSS",
   "sideEffects": false,
   "type": "module",
