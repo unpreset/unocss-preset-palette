@@ -27,13 +27,12 @@ export default defineConfig({
       themeColors: {
         // [hue, saturation, lightness]
         primary: [100, "100%", "50%"],
-        secondary: "#00ff00",
         tertiary: "#0000ff",
-        // dark mode
-        dark: {
-          primary: "#ff0000",
-          secondary: "#00ff00",
-          tertiary: "#0000ff",
+        secondary: {
+          // dark theme
+          dark: "#ff0000",
+          // light theme
+          default: "#00ff00",
         }
       },
     }),
@@ -42,6 +41,17 @@ export default defineConfig({
 ```
 
 ### Rules
+
+- text-`[color]`/`[opacity]`
+- bg-`[color]`/`[opacity]`
+- border-`[color]`/`[opacity]`
+- underline-`[color]`/`[opacity]`
+- decoration-`[color]`/`[opacity]`
+- ring-`[color]`/`[opacity]`
+- outline-`[color]`/`[opacity]`
+- fill-`[color]`/`[opacity]`
+- text-stroke-`[color]`/`[opacity]`
+- bg-gradient-`[color]`/`[opacity]`
 
 ```html
 <div class="text-primary/72"></div>
@@ -61,12 +71,10 @@ export default defineConfig({
   background-color: hsla(var(--un-platte-primary-color), 0.36);
   // rgba
   // background-color: rgba(var(--un-platte-primary-color), 0.36);
+}
 
 ```
 
-
-
-###
 
 ### Type Declarations
 

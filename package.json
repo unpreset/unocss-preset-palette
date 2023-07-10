@@ -22,7 +22,8 @@
     "build": "unbuild",
     "release": "bumpp package.json --commit \"release: v\" --push --tag",
     "lint": "eslint --ext .ts,.tsx .",
-    "prepare": "npx simple-git-hooks"
+    "prepare": "npx simple-git-hooks",
+    "test":"vitest"
   },
   "repository": {
     "type": "git",
@@ -52,6 +53,7 @@
     "unbuild": "^1.2.1",
     "unocss": "^0.53.4",
     "vite": "^4.3.9",
+    "vitest": "^0.33.0",
     "vue": "^3.3.4"
   },
   "peerDependencies": {

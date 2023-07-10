@@ -1,44 +1,40 @@
 import { parseCssColor } from "@unocss/preset-mini/utils";
 import { type ThemeColors } from "./types";
 
-/// rgb->hsl
-function rgb2hsl(values: (string | number)[]) {
-  const [red, green, blue] = values.map(e => Number(e) / 255);
-  const max = Math.max(red, green, blue);
-  const min = Math.min(red, green, blue);
-  // eslint-disable-next-line prefer-const
-  let [hue, sat, light] = [Number.NaN, 0, (min + max) / 2];
+
+export function rgb2hsl(values: (string | number) []) {
+  const [r, g, b] = values.map(e => Number(e) / 255);
+  // convert values to percentage
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
   const d = max - min;
 
-  if (d !== 0) {
-    sat = (light === 0 || light === 1)
-      ? 0
-      : (max - light) / Math.min(light, 1 - light);
+  // default hsl to achromatic
+  let h = 0;
+  let s = 0;
+  const l = (max + min) / 2;
 
+  // if not achromatic...
+  if (max !== min) {
+    s = (max - l) / Math.min(l, 1 - l);
+    
     switch (max) {
-      case red:
-        hue = (green - blue) / d + (green < blue ? 6 : 0);
-        break
-
-
-
-        ;
-      case green:
-        hue = (blue - red) / d + 2;
-        break
-
-
-
-        ;
-      case blue: hue = (red - green) / d + 4;
+      case r:
+        h = 60 * (g - b) / d;
+        break;
+      case g:
+        h = 60 * ((b - r) / d + 2);
+        break;
+      case b:
+        h = 60 * ((r - g) / d + 4);
+        break;
     }
-
-    hue = hue * 60;
+    if (h < 0) {
+      h += 360;
+    }
   }
-
-  return [hue, sat * 100, light * 100];
+  return [h, s, l];
 }
-
 
 
 function getCssColor(color: string | (string | number) [], colorFormat: "rgb" | "hsl") {
@@ -54,8 +50,8 @@ function getCssColor(color: string | (string | number) [], colorFormat: "rgb" | 
     if (colorFormat === "hsl") {
       const [hue, sat, light] = rgb2hsl(components);
       components[0] = hue;
-      components[1] = `${sat}%`;
-      components[2] = `${light}%`;
+      components[1] = `${sat * 100}%`;
+      components[2] = `${light * 100}%`;
     }
     return components.join(",");
   }

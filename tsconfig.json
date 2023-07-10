@@ -15,8 +15,8 @@
     }, 
     "include": [
       "./src/**/*.ts",
-      "./playground/**/*.ts",
-      "./playground/**/*.tsx"
+      "./**/*.ts",
+      "./**/*.tsx"
     ],
     "exclude": [
       "**/dist/**",
