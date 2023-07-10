@@ -20,8 +20,9 @@ export default defineConfig(() => ({
           colorMode: {
             attribute: "data-theme"
           },
+          colorFormat: "hsl",
           colors: {
-            primary: "#4fb3ff",
+            primary: ["30", "100%", "50%"],
             light: {
               light: "#f7f8f9",
               dark: "#1a1a1a",

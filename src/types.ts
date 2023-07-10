@@ -1,4 +1,4 @@
-export type ThemeColors = Record<string, string | Record<string, string>>;
+export type ThemeColors = Record<string, string | (string | number)[] | Record<string, string | (string | number)[]>>;
 
 export interface CssVarName {
   (name: string): string
@@ -9,7 +9,7 @@ export interface CssVarName {
 export interface PaletteOptions {
 
   /**
-   *
+   * define theme colors
    */
   themeColors?: ThemeColors
   /**
@@ -38,5 +38,7 @@ export interface PaletteOptions {
   * @default --un-platte-[name]-color
   */
   cssVarName?: CssVarName
+
+  colorFormat?: "rgb" | "hsl"
 }
 

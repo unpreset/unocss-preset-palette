@@ -9,7 +9,7 @@ import { getColorComponents } from "./utils";
  * @returns
  */
 export function presetPalette(options: PaletteOptions = {}): Preset<{}> {
-  const { colors: _colors = {}, themeColors = {}, colorMode = {} } = options;
+  const { colors: _colors = {}, themeColors = {}, colorMode = {}, colorFormat = "rgb" } = options;
   
   Object.assign(themeColors, { ..._colors });
 
@@ -17,7 +17,7 @@ export function presetPalette(options: PaletteOptions = {}): Preset<{}> {
 
   const cssVarName: CssVarName = options.cssVarName || ((name) => `un-platte-${name}-color`);
 
-  const colorComponents = getColorComponents(themeColors, defaultValue);
+  const colorComponents = getColorComponents(themeColors, defaultValue, colorFormat);
 
   let getVarName: (name: string) => string;
 
@@ -29,7 +29,22 @@ export function presetPalette(options: PaletteOptions = {}): Preset<{}> {
     getVarName = name => `--${prefix}${name}${suffix}`;
   }
 
-  const colors = Object.fromEntries(Object.keys(themeColors).map(e => [e, `rgba(var(${getVarName(e)}))`]));
+  const getColor = (name: string, opacity = 100) => {
+    const alpha = opacity / 100;
+    const value = `var(${getVarName(name)})`;
+    if (colorFormat === "hsl") {
+      return `hsla(${value}, ${alpha})`;
+    }
+    return `rgba(${value}, ${alpha})`;
+  };
+
+
+
+  const colors = Object.fromEntries(Object.keys(themeColors).map(e => {
+    return [e, getColor(e)];
+  }));
+
+
 
   return {
     name: "preset-palette",
@@ -63,20 +78,29 @@ export function presetPalette(options: PaletteOptions = {}): Preset<{}> {
     ],
     rules: [
       [
-        /^bg-(.*)-([1-9]|[1-9]\d)$/,
+        /^bg-(.*)\/([1-9]|[1-9]\d)$/,
         ([, c, o]) => {
           const opacity = Number(o);
           if (themeColors[c]) {
-            return { background: `rgba(var(${getVarName(c)}), ${opacity / 100})` };
+            return { background: getColor(c, opacity) };
           }
         }
       ],
       [
-        /^text-(.*)-([1-9]|[1-9]\d)$/,
+        /^text-(.*)\/([1-9]|[1-9]\d)$/,
         ([, c, o]) => {
           const opacity = Number(o);
           if (themeColors[c]) {
-            return { color: `rgba(var(${getVarName(c)}), ${opacity / 100})` };
+            return { color: getColor(c, opacity) };
+          }
+        }
+      ],
+      [
+        /^border-(.*)\/([1-9]|[1-9]\d)$/,
+        ([, c, o]) => {
+          const opacity = Number(o);
+          if (themeColors[c]) {
+            return { borderColor: getColor(c, opacity) };
           }
         }
       ]
