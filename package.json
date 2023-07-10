@@ -1,6 +1,6 @@
 {
   "name": "unocss-preset-palette",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Palette Preset for UnoCSS",
   "sideEffects": false,
   "type": "module",
@@ -23,7 +23,7 @@
     "release": "bumpp package.json --commit \"release: v\" --push --tag",
     "lint": "eslint --ext .ts,.tsx .",
     "prepare": "npx simple-git-hooks",
-    "test":"vitest"
+    "test": "vitest"
   },
   "repository": {
     "type": "git",
