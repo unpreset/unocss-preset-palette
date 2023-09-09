@@ -1,14 +1,30 @@
 {
   "name": "unocss-preset-palette",
+  "type": "module",
   "version": "0.2.1",
   "description": "Palette Preset for UnoCSS",
+  "author": "chizukicn",
+  "license": "MIT",
+  "homepage": "https://github.com/unpreset/unocss-preset-palette#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unpreset/unocss-preset-palette.git"
+  },
+  "bugs": {
+    "url": "https://github.com/unpreset/unocss-preset-palette/issues"
+  },
+  "keywords": [
+    "unocss",
+    "unpreset",
+    "unocss-preset",
+    "unocss-preset-palette"
+  ],
   "sideEffects": false,
-  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
     }
   },
   "main": "./dist/index.cjs",
@@ -23,46 +39,34 @@
     "release": "bumpp package.json --commit \"release: v\" --push --tag",
     "lint": "eslint --ext .ts,.tsx .",
     "prepare": "npx simple-git-hooks",
-    "test": "vitest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/chizukicn/unocss-preset-palette.git"
-  },
-  "keywords": [
-    "unocss",
-    "unocss-preset",
-    "unocss-preset-palette"
-  ],
-  "author": "chizukicn",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/chizukicn/unocss-preset-palette/issues"
-  },
-  "homepage": "https://github.com/chizukicn/unocss-preset-palette#readme",
-  "devDependencies": {
-    "@curev/eslint-config": "^0.1.7",
-    "@vitejs/plugin-vue-jsx": "^3.0.1",
-    "@vueuse/core": "^10.2.1",
-    "bumpp": "^9.1.1",
-    "eslint": "^8.44.0",
-    "lint-staged": "^13.2.3",
-    "prettier": "^2.5.1",
-    "simple-git-hooks": "^2.8.1",
-    "typescript": "5.1.6",
-    "unbuild": "^1.2.1",
-    "unocss": "^0.53.4",
-    "vite": "^4.3.9",
-    "vitest": "^0.33.0",
-    "vue": "^3.3.4"
+    "test": "vitest",
+    "up": "taze major"
   },
   "peerDependencies": {
     "@unocss/core": "<1",
     "@unocss/preset-mini": "<1"
   },
   "dependencies": {
-    "@unocss/core": "^0.53.4",
-    "@unocss/preset-mini": "^0.53.4"
+    "@unocss/core": "^0.55.7",
+    "@unocss/preset-mini": "^0.55.7",
+    "csstype": "^3.1.2"
+  },
+  "devDependencies": {
+    "@curev/eslint-config": "^0.2.1",
+    "@vitejs/plugin-vue-jsx": "^3.0.2",
+    "@vueuse/core": "^10.4.1",
+    "bumpp": "^9.2.0",
+    "eslint": "^8.49.0",
+    "lint-staged": "^14.0.1",
+    "prettier": "^3.0.3",
+    "simple-git-hooks": "^2.9.0",
+    "taze": "^0.11.2",
+    "typescript": "5.2.2",
+    "unbuild": "^2.0.0",
+    "unocss": "0.55.7",
+    "vite": "^4.4.9",
+    "vitest": "^0.34.4",
+    "vue": "^3.3.4"
   },
   "simple-git-hooks": {
     "pre-commit": [

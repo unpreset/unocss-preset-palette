@@ -1,3 +1,7 @@
+import type * as CSS from "csstype";
+export interface CSSProperties extends CSS.Properties<string | number>, CSS.PropertiesHyphen<string | number> {
+  [v: `--${string}`]: string | number | undefined
+}
 export type ThemeColors = Record<string, string | (string | number)[] | Record<string, string | (string | number)[]>>;
 
 export interface CssVarName {

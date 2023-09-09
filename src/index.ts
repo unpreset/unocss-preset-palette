@@ -1,8 +1,8 @@
-import { type CSSObject, type Preset } from "@unocss/core";
+import type { Preset } from "@unocss/core";
 import { directionMap, h } from "@unocss/preset-mini/utils";
-import { type CSSProperties } from "vue";
-import { type CssVarName, type PaletteOptions } from "./types";
+import type { CSSProperties, CssVarName, PaletteOptions } from "./types";
 import { getColorComponents } from "./utils";
+export { Theme } from "@unocss/preset-mini";
 
 
 
@@ -11,7 +11,7 @@ import { getColorComponents } from "./utils";
  * @param options
  * @returns
  */
-export function presetPalette(options: PaletteOptions = {}): Preset<{}> {
+export const presetPalette = (options: PaletteOptions = {}): Preset => {
   const { colors: _colors = {}, themeColors = {}, colorMode = {}, colorFormat = "rgb" } = options;
   
   Object.assign(themeColors, { ..._colors });
@@ -48,7 +48,7 @@ export function presetPalette(options: PaletteOptions = {}): Preset<{}> {
   }));
 
   function borderColorResolver(direction: string) {
-    return (colorName: string, opacity: number): CSSObject | undefined => {
+    return (colorName: string, opacity: number): CSSProperties | undefined => {
       if (direction === "") {
         return {
           "--un-border-opacity": `${opacity / 100}`,
@@ -249,7 +249,7 @@ export function presetPalette(options: PaletteOptions = {}): Preset<{}> {
    
     ]
   };
-}
+};
 
 
 export default presetPalette;
