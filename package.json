@@ -36,6 +36,7 @@
   "scripts": {
     "dev": "vite playground",
     "build": "unbuild",
+    "build:playground": "vite build playground",
     "release": "bumpp package.json --commit \"release: v\" --push --tag",
     "lint": "eslint --ext .ts,.tsx .",
     "prepare": "npx simple-git-hooks",
