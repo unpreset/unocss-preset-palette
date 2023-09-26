@@ -1,8 +1,8 @@
-import type { Preset } from "@unocss/core";
+import { definePreset } from "@unocss/core";
 import { directionMap, h } from "@unocss/preset-mini/utils";
+import type { Theme } from "@unocss/preset-mini";
 import type { CSSProperties, CssVarName, PaletteOptions } from "./types";
 import { getColorComponents } from "./utils";
-export { Theme } from "@unocss/preset-mini";
 
 
 
@@ -11,7 +11,7 @@ export { Theme } from "@unocss/preset-mini";
  * @param options
  * @returns
  */
-export const presetPalette = (options: PaletteOptions = {}): Preset => {
+export const presetPalette = definePreset((options: PaletteOptions = {}) => {
   const { colors: _colors = {}, themeColors = {}, colorMode = {}, colorFormat = "rgb" } = options;
   
   Object.assign(themeColors, { ..._colors });
@@ -93,8 +93,6 @@ export const presetPalette = (options: PaletteOptions = {}): Preset => {
 
       const color = getColor(c, opacity);
 
-    
-
       switch (mode) {
         case "from":
           return {
@@ -125,7 +123,7 @@ export const presetPalette = (options: PaletteOptions = {}): Preset => {
     name: "preset-palette",
     theme: {
       colors
-    },
+    } as Theme,
     layers: {
       palette: -1
     },
@@ -249,7 +247,7 @@ export const presetPalette = (options: PaletteOptions = {}): Preset => {
    
     ]
   };
-};
+});
 
 
 export default presetPalette;
