@@ -17,7 +17,7 @@ export const presetPalette = definePreset((options: PaletteOptions = {}) => {
 
   const { selector = ":root", attribute = "class", defaultValue = "default" } = colorMode;
 
-  const cssVarName: CssVarName = options.cssVarName || "un-platte-[name]-color";
+  const cssVarName: CssVarName = options.cssVarName || "un-palette-[name]-color";
 
   const colorComponents = getColorComponents(themeColors, defaultValue, colorFormat);
 
@@ -28,7 +28,7 @@ export const presetPalette = definePreset((options: PaletteOptions = {}) => {
   } else if (typeof cssVarName === "function") {
     getVarName = name => normalizeVarName(cssVarName(name));
   } else {
-    const prefix = cssVarName?.prefix ?? "un-platte-";
+    const prefix = cssVarName?.prefix ?? "un-palette-";
     const suffix = cssVarName?.suffix ?? "-color";
     getVarName = name => normalizeVarName(`${prefix}${name}${suffix}`);
   }

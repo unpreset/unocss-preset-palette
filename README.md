@@ -48,16 +48,16 @@ export default defineConfig({
 ```css
 .text-primary\/72 {
   // hsla
-  color: hsla(var(--un-platte-primary-color-hsl) /  0.72);
+  color: hsla(var(--un-palette-primary-color-hsl) /  0.72);
   // rgba
-  // color: rgba(var(--un-platte-primary-color-rgb) / 0.72);
+  // color: rgba(var(--un-palette-primary-color-rgb) / 0.72);
 }
 
 .bg-primary\/36 {
   // hsla
-  background-color: hsla(var(--un-platte-primary-color-hsl) / 0.36);
+  background-color: hsla(var(--un-palette-primary-color-hsl) / 0.36);
   // rgba
-  // background-color: rgba(var(--un-platte-primary-color-rgb) / 0.36);
+  // background-color: rgba(var(--un-palette-primary-color-rgb) / 0.36);
 }
 
 ```
@@ -103,7 +103,7 @@ export interface PaletteOptions {
   }
 
   /**
-  * @default --un-platte-[name]-color
+  * @default --un-palette-[name]-color
   */
   cssVarName?: CssVarName
 

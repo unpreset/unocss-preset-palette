@@ -40,7 +40,7 @@ export interface PaletteOptions {
   }
 
   /**
-  * @default --un-platte-[name]-color
+  * @default --un-palette-[name]-color
   */
   cssVarName?: CssVarName
 

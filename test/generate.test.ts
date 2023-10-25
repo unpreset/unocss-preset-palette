@@ -15,7 +15,7 @@ describe("generate test", () => {
     const { css } = await uno.generate("bg-primary");
     expect(css).toMatchInlineSnapshot(`
       "/* layer: palette */
-      :root{--un-platte-primary-color-rgb:255 0 0;--un-platte-primary-color:rgb(var(--un-platte-primary-color-rgb));}"
+      :root{--un-palette-primary-color-rgb:255 0 0;--un-palette-primary-color:rgb(var(--un-palette-primary-color-rgb));}"
     `);
   });
 
@@ -35,7 +35,7 @@ describe("generate test", () => {
     });
     expect(css).toMatchInlineSnapshot(`
       "/* layer: default */
-      .bg-primary{--un-bg-opacity:1;background-color:rgb(var(--un-platte-primary-color-rgb) / var(--un-bg-opacity));}"
+      .bg-primary{--un-bg-opacity:1;background-color:rgb(var(--un-palette-primary-color-rgb) / var(--un-bg-opacity));}"
     `);
   });
 });

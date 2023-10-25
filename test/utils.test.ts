@@ -15,7 +15,7 @@ describe("utils test", () => {
   });
 
   it("normalizeVarName", () => {
-    expect(normalizeVarName("un-platte-primary-color")).toEqual("--un-platte-primary-color");
-    expect(normalizeVarName("--un-platte-primary-color")).toEqual("--un-platte-primary-color");
+    expect(normalizeVarName("un-palette-primary-color")).toEqual("--un-palette-primary-color");
+    expect(normalizeVarName("--un-palette-primary-color")).toEqual("--un-palette-primary-color");
   });
 });
