@@ -9,10 +9,9 @@ export default defineConfig({
       colorMode: {
         attribute: "data-theme"
       },
-      colorFormat: "hsl",
+      colorFormat: "rgb",
       colors: {
-        // hsl format
-        primary: [0, "100%", "50%"],
+        primary: "#ff0000",
         tertiary: "#30fad3",
         // dark mode
         secondary: {

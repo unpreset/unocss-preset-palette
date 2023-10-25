@@ -35,10 +35,13 @@ export const presetPalette = definePreset((options: PaletteOptions = {}) => {
   const getColor = (name: string, opacity: string | number = 100) => {
     const alpha = typeof opacity === "number" ? `${opacity / 100}` : opacity;
     const value = `var(${getVarName(name)})`;
-    if (colorFormat === "hsl") {
-      return `hsla(${value}, ${alpha})`;
+    if (alpha === "1") {
+      return `${colorFormat}(var(${getVarName(name)}-${colorFormat}))`;
     }
-    return `rgba(${value}, ${alpha})`;
+    if (colorFormat === "hsl") {
+      return `hsla(${value} / ${alpha})`;
+    }
+    return `rgba(${value} / ${alpha})`;
   };
 
 
@@ -117,8 +120,6 @@ export const presetPalette = definePreset((options: PaletteOptions = {}) => {
     };
   }
 
-
-
   return {
     name: "preset-palette",
     theme: {
@@ -141,7 +142,8 @@ export const presetPalette = definePreset((options: PaletteOptions = {}) => {
             rs.push("{");
             for (const colorName in colorComponents[theme]) {
               const components = colorComponents[theme][colorName];
-              rs.push(`${getVarName(colorName)}:${components}`, ";");
+              const varName = getVarName(colorName);
+              rs.push(`${varName}-${colorFormat}:${components}`, ";", `${varName}:${colorFormat}(var(${varName}-${colorFormat}))`, ";");
             }
             rs.push("}");
           }

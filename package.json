@@ -37,6 +37,7 @@
   "scripts": {
     "dev": "vitest",
     "play": "vite playground",
+    "stub": "unbuild --stub",
     "build": "unbuild",
     "build:playground": "vite build playground",
     "release": "bumpp package.json --commit \"release: v\" --push --tag",

@@ -39,7 +39,7 @@ export function rgb2hsl(values: (string | number) []) {
 
 function getCssColor(color: string | (string | number) [], colorFormat: "rgb" | "hsl") {
   if (Array.isArray(color)) {
-    return color.join(",");
+    return color.join(" ");
   }
   const cssColor = parseCssColor(color);
   if (cssColor) {
@@ -53,7 +53,7 @@ function getCssColor(color: string | (string | number) [], colorFormat: "rgb" | 
       components[1] = `${sat * 100}%`;
       components[2] = `${light * 100}%`;
     }
-    return components.join(",");
+    return components.join(" ");
   }
   return color;
 }
@@ -65,7 +65,7 @@ function getCssColor(color: string | (string | number) [], colorFormat: "rgb" | 
  * @returns
  */
 export function getColorComponents(colors: ThemeColors = {}, defaultTheme: string, colorFormat: "rgb" | "hsl") {
-  const rs: Record<string, Record<string, (string | number)[] | string>> = {};
+  const rs: Record<string, Record<string, | string>> = {};
   for (const key in colors) {
     const value = colors[key];
 
