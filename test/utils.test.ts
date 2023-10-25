@@ -11,6 +11,6 @@ describe("utils test", () => {
     const components = getColorComponents({
       primary: "rgb(255,0,0)"
     }, "light", "hsl");
-    expect(components.light.primary).toEqual("0,100%,50%");
+    expect(components.light.primary).toEqual("0 100% 50%");
   });
 });
