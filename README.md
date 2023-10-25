@@ -40,19 +40,6 @@ export default defineConfig({
 });
 ```
 
-### Rules
-
-- text-`[color]`/`[opacity]`
-- bg-`[color]`/`[opacity]`
-- border-`[color]`/`[opacity]`
-- underline-`[color]`/`[opacity]`
-- decoration-`[color]`/`[opacity]`
-- ring-`[color]`/`[opacity]`
-- outline-`[color]`/`[opacity]`
-- fill-`[color]`/`[opacity]`
-- text-stroke-`[color]`/`[opacity]`
-- bg-gradient-`[color]`/`[opacity]`
-
 ```html
 <div class="text-primary/72"></div>
 <div class="bg-primary/36"></div>
@@ -61,16 +48,16 @@ export default defineConfig({
 ```css
 .text-primary\/72 {
   // hsla
-  color: hsla(var(--un-platte-primary-color), 0.72);
+  color: hsla(var(--un-platte-primary-color-hsl) /  0.72);
   // rgba
-  // color: rgba(var(--un-platte-primary-color), 0.72);
+  // color: rgba(var(--un-platte-primary-color-rgb) / 0.72);
 }
 
 .bg-primary\/36 {
   // hsla
-  background-color: hsla(var(--un-platte-primary-color), 0.36);
+  background-color: hsla(var(--un-platte-primary-color-hsl) / 0.36);
   // rgba
-  // background-color: rgba(var(--un-platte-primary-color), 0.36);
+  // background-color: rgba(var(--un-platte-primary-color-rgb) / 0.36);
 }
 
 ```
