@@ -85,3 +85,8 @@ export function getColorComponents(colors: ThemeColors = {}, defaultTheme: strin
   }
   return rs;
 }
+
+
+export function normalizeVarName(varName: string) {
+  return `--${varName}`.replace(/^-+/, "--");
+}

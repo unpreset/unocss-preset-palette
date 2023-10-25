@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getColorComponents, rgb2hsl } from "../src/utils";
+import { getColorComponents, normalizeVarName, rgb2hsl } from "../src/utils";
 
 
 describe("utils test", () => {
@@ -12,5 +12,10 @@ describe("utils test", () => {
       primary: "rgb(255,0,0)"
     }, "light", "hsl");
     expect(components.light.primary).toEqual("0 100% 50%");
+  });
+
+  it("normalizeVarName", () => {
+    expect(normalizeVarName("un-platte-primary-color")).toEqual("--un-platte-primary-color");
+    expect(normalizeVarName("--un-platte-primary-color")).toEqual("--un-platte-primary-color");
   });
 });

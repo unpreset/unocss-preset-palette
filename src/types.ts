@@ -4,11 +4,12 @@ export interface CSSProperties extends CSS.Properties<string | number>, CSS.Prop
 }
 export type ThemeColors = Record<string, string | (string | number)[] | Record<string, string | (string | number)[]>>;
 
-export interface CssVarName {
+export type CssVarName = string | {
   (name: string): string
+} | {
   prefix?: string
   suffix?: string
-}
+};
 
 export interface PaletteOptions {
 
