@@ -103,6 +103,19 @@ export interface PaletteOptions {
   }
 
   /**
+   * use opacity variable
+   *
+   * ```css
+   * .text-primary {
+   *   --un-text-opacity: 1;
+   *   color: rgb(var(--un-palette-primary-rgb) / var(--un-text-opacity));
+   * }
+   * ```
+   * @default true
+   */
+  useOpacityVariable?: boolean
+
+  /**
   * @default --un-palette-[name]-color
   */
   cssVarName?: CssVarName

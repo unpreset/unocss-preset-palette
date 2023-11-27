@@ -62,9 +62,10 @@ export const presetPalette = definePreset((options: PaletteOptions = {}) => {
             for (const colorName in colorComponents[theme]) {
               const components = colorComponents[theme][colorName];
               const varName = getVarName(colorName);
-              rs.push(`${varName}-${colorFormat}:${components}`, ";");
               if (useOpacityVariable) {
-                rs.push(`${varName}:${colorFormat}(var(${varName}-${colorFormat}))`, ";");
+                rs.push(`${varName}-${colorFormat}:${components}`, ";", `${varName}:${colorFormat}(var(${varName}-${colorFormat}))`, ";");
+              } else {
+                rs.push(`${varName}:${colorFormat}(${components})`, ";");
               }
             }
             rs.push("}");
