@@ -11,7 +11,7 @@ import { getColorComponents, normalizeVarName } from "./utils";
  * @returns
  */
 export const presetPalette = definePreset((options: PaletteOptions = {}) => {
-  const { colors: _colors = {}, themeColors = {}, colorMode = {}, colorFormat = "rgb" } = options;
+  const { colors: _colors = {}, themeColors = {}, colorMode = {}, colorFormat = "rgb", useOpacityVariable = true } = options;
   
   Object.assign(themeColors, { ..._colors });
 
@@ -34,7 +34,7 @@ export const presetPalette = definePreset((options: PaletteOptions = {}) => {
   }
 
   const colors = Object.fromEntries(Object.keys(themeColors).map(e => {
-    const colorValue = `${colorFormat}(var(${getVarName(e)}-${colorFormat}))`;
+    const colorValue = useOpacityVariable ? `${colorFormat}(var(${getVarName(e)}-${colorFormat}))` : `var(${getVarName(e)})`;
     return [e, colorValue];
   }));
 
@@ -62,7 +62,10 @@ export const presetPalette = definePreset((options: PaletteOptions = {}) => {
             for (const colorName in colorComponents[theme]) {
               const components = colorComponents[theme][colorName];
               const varName = getVarName(colorName);
-              rs.push(`${varName}-${colorFormat}:${components}`, ";", `${varName}:${colorFormat}(var(${varName}-${colorFormat}))`, ";");
+              rs.push(`${varName}-${colorFormat}:${components}`, ";");
+              if (useOpacityVariable) {
+                rs.push(`${varName}:${colorFormat}(var(${varName}-${colorFormat}))`, ";");
+              }
             }
             rs.push("}");
           }
