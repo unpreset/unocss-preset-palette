@@ -1,5 +1,5 @@
 import { defineConfig, presetUno } from "unocss";
-import presetPalette from "../src";
+import presetPalette from "./src";
 
 export default defineConfig({
 
