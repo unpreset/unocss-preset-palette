@@ -11,6 +11,7 @@ export type CssVarName = string | {
   suffix?: string
 };
 
+export type ColorScheme = "light" | "dark";
 export interface PaletteOptions {
 
   /**
@@ -58,5 +59,7 @@ export interface PaletteOptions {
   cssVarName?: CssVarName
 
   colorFormat?: "rgb" | "hsl"
+
+  colorScheme?: Record<string, ColorScheme>
 }
 

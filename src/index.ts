@@ -11,7 +11,7 @@ import { getColorComponents, normalizeVarName } from "./utils";
  * @returns
  */
 export const presetPalette = definePreset((options: PaletteOptions = {}) => {
-  const { colors: _colors = {}, themeColors = {}, colorMode = {}, colorFormat = "rgb", useOpacityVariable = true } = options;
+  const { colors: _colors = {}, themeColors = {}, colorMode = {}, colorFormat = "rgb", useOpacityVariable = true, colorScheme = {} } = options;
   
   Object.assign(themeColors, { ..._colors });
 
@@ -59,6 +59,10 @@ export const presetPalette = definePreset((options: PaletteOptions = {}) => {
               rs.push(`[${attribute}="${theme}"]`);
             }
             rs.push("{");
+            if (colorScheme[theme]) {
+              rs.push(`color-scheme:${colorScheme[theme]};`);
+            }
+
             for (const colorName in colorComponents[theme]) {
               const components = colorComponents[theme][colorName];
               const varName = getVarName(colorName);
