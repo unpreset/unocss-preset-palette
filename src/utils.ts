@@ -46,6 +46,7 @@ function getCssColor(color: string | (string | number) [], colorFormat: "rgb" | 
     const components = [...cssColor.components];
     if (cssColor.alpha) {
       components.push(cssColor.alpha);
+      return components.join(",");
     }
     if (colorFormat === "hsl") {
       const [hue, sat, light] = rgb2hsl(components);
